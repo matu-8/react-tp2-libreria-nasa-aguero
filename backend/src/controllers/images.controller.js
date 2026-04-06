@@ -1,3 +1,4 @@
+//Archivo donde se traen las imagenes 
 import 'dotenv/config';
 
 const NASA_API_URL = process.env.NASA_API_URL;
