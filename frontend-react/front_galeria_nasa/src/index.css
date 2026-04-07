@@ -1,0 +1,315 @@
+/* ===========================
+   PALETA DE COLORES
+   #3e92cc  azul claro (acentos, links)
+   #2a628f  azul medio (hover de botones)
+   #13293d  azul muy oscuro (fondo principal)
+   #16324f  azul oscuro (header, cards)
+   #18435a  azul intermedio (botones)
+   =========================== */
+
+/* Reset básico */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #13293d;
+  color: #e0eaf3;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+}
+
+/* ---- HEADER / NAV ---- */
+header {
+  background-color: #16324f;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 1.4rem;
+  color: #3e92cc;
+  letter-spacing: 1px;
+}
+
+nav {
+  background-color: #16324f;
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 2rem;
+}
+
+nav button {
+  background-color: #18435a;
+  color: #e0eaf3;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.2s;
+}
+
+nav button:hover {
+  background-color: #2a628f;
+}
+
+nav button.active {
+  background-color: #3e92cc;
+  color: #13293d;
+  font-weight: bold;
+}
+
+/* ---- GALERÍA ---- */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.2rem;
+  padding: 2rem;
+}
+
+/* ---- IMAGE CARD ---- */
+.image-card {
+  background-color: #16324f;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.image-card img,
+.image-card iframe {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.image-card-info {
+  padding: 0.8rem 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.image-card-info h3 {
+  font-size: 0.95rem;
+  color: #3e92cc;
+}
+
+.image-card-info p {
+  font-size: 0.8rem;
+  color: #a0b8cc;
+}
+
+/* ---- BOTONES GENERALES ---- */
+.btn {
+  background-color: #18435a;
+  color: #e0eaf3;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.btn:hover {
+  background-color: #2a628f;
+}
+
+.btn:disabled {
+  background-color: #2a628f;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-danger {
+  background-color: #7a2020;
+}
+
+.btn-danger:hover {
+  background-color: #9e2a2a;
+}
+
+/* ---- CARGA / ERROR / INFO ---- */
+.loader {
+  text-align: center;
+  padding: 2rem;
+  color: #3e92cc;
+}
+
+.error-msg {
+  color: #f87171;
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+}
+
+.success-msg {
+  color: #4ade80;
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+}
+
+.empty-msg {
+  text-align: center;
+  padding: 3rem;
+  color: #a0b8cc;
+}
+
+/* ---- MODAL OVERLAY ---- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #16324f;
+  border-radius: 8px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 480px;
+}
+
+.modal-content h3 {
+  color: #3e92cc;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.modal-content p {
+  color: #a0b8cc;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+/* ---- FORMULARIO ---- */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  color: #a0b8cc;
+}
+
+.form-group textarea,
+.form-group input {
+  background-color: #13293d;
+  color: #e0eaf3;
+  border: 1px solid #2a628f;
+  border-radius: 4px;
+  padding: 0.6rem;
+  font-size: 0.9rem;
+  resize: vertical;
+  width: 100%;
+}
+
+.form-group textarea:focus,
+.form-group input:focus {
+  outline: none;
+  border-color: #3e92cc;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.form-actions .btn {
+  margin-top: 0;
+}
+
+/* ---- FAVORITE CARD ---- */
+.favorite-card {
+  background-color: #16324f;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.favorite-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.favorite-card-info {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.favorite-card-info h3 {
+  color: #3e92cc;
+  font-size: 0.95rem;
+}
+
+.favorite-card-info p {
+  color: #a0b8cc;
+  font-size: 0.8rem;
+}
+
+.favorite-card-actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.favorite-card-actions .btn {
+  margin-top: 0;
+}
+
+/* ---- SEARCH BAR ---- */
+.search-bar {
+  padding: 1rem 2rem 0;
+}
+
+.search-bar input {
+  background-color: #16324f;
+  color: #e0eaf3;
+  border: 1px solid #2a628f;
+  border-radius: 4px;
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: #3e92cc;
+}
+
+/* ---- FAVORITES LIST ---- */
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.2rem;
+  padding: 1.5rem 2rem;
+}
+
+/* ---- CENTINELA SCROLL ---- */
+.scroll-sentinel {
+  height: 1px;
+}

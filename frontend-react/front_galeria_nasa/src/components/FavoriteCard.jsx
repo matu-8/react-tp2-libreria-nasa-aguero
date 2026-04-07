@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-// Componente de ítem de favorito con edición de nota (PUT) y eliminación (DELETE)
 function FavoriteCard({ favorite, onEdit, onDelete }) {
   const [note, setNote] = useState(favorite.note || '');
   const [saving, setSaving] = useState(false);
@@ -8,7 +7,6 @@ function FavoriteCard({ favorite, onEdit, onDelete }) {
   const [error, setError] = useState(null);
   const [noteSaved, setNoteSaved] = useState(false);
 
-  //metodo PUT (edita y guarda la nota)
   const handleSaveNote = async () => {
     setSaving(true);
     setError(null);
@@ -35,38 +33,42 @@ function FavoriteCard({ favorite, onEdit, onDelete }) {
       setError(result.msg);
       setDeleting(false);
     }
-    // Si success: true, el componente desaparece al actualizarse el estado en el hook
   };
 
   return (
-    <div>
+    <div className="favorite-card">
       {favorite.media_type === 'image' && (
         <img src={favorite.url} alt={favorite.title} />
       )}
 
-      <h3>{favorite.title}</h3>
-      <p>{favorite.date}</p>
+      <div className="favorite-card-info">
+        <h3>{favorite.title}</h3>
+        <p>{favorite.date}</p>
 
-      <textarea
-        value={note}
-        onChange={(e) => {
-          setNote(e.target.value);
-          setNoteSaved(false);
-        }}
-        placeholder="Agregar una nota..."
-        rows={3}
-      />
+        <div className="form-group">
+          <textarea
+            value={note}
+            onChange={(e) => {
+              setNote(e.target.value);
+              setNoteSaved(false);
+            }}
+            placeholder="Agregar una nota..."
+            rows={3}
+          />
+        </div>
 
-      {error && <p>Error: {error}</p>}
-      {noteSaved && <p>Nota guardada!</p>}
+        {error && <p className="error-msg">{error}</p>}
+        {noteSaved && <p className="success-msg">Nota guardada ✓</p>}
 
-      <button onClick={handleSaveNote} disabled={saving || deleting}>
-        {saving ? 'Guardando...' : 'Guardar nota'}
-      </button>
-
-      <button onClick={handleDelete} disabled={deleting || saving}>
-        {deleting ? 'Eliminando...' : 'Eliminar'}
-      </button>
+        <div className="favorite-card-actions">
+          <button className="btn" onClick={handleSaveNote} disabled={saving || deleting}>
+            {saving ? 'Guardando...' : 'Guardar nota'}
+          </button>
+          <button className="btn btn-danger" onClick={handleDelete} disabled={deleting || saving}>
+            {deleting ? 'Eliminando...' : 'Eliminar'}
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
