@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import useGallery from './hooks/useGallery';
 import useFavorites from './hooks/useFavorites';
 import Gallery from './components/Gallery';
 import Favorites from './components/Favorites';
@@ -7,6 +8,7 @@ import FavoriteForm from './components/FavoriteForm';
 function App() {
   const [vista, setVista] = useState('galeria');
   const [selectedImage, setSelectedImage] = useState(null);
+  const { images, loading: galleryLoading, error: galleryError, loadMore } = useGallery();
   const { favorites, loading, error, addFavorite, editNote, removeFavorite } = useFavorites();
 
   const handleSaveRequest = (image) => {
@@ -63,7 +65,13 @@ function App() {
 
       {/* Vistas */}
       {vista === 'galeria' && (
-        <Gallery onSaveRequest={handleSaveRequest} />
+        <Gallery
+          images={images}
+          loading={galleryLoading}
+          error={galleryError}
+          loadMore={loadMore}
+          onSaveRequest={handleSaveRequest}
+        />
       )}
 
       {vista === 'favoritos' && (
