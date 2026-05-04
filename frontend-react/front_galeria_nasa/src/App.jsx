@@ -1,15 +1,24 @@
-import { useState } from 'react';
-import useGallery from './hooks/useGallery';
-import useFavorites from './hooks/useFavorites';
-import Gallery from './components/Gallery';
-import Favorites from './components/Favorites';
-import FavoriteForm from './components/FavoriteForm';
+import { useState, useContext } from "react";
+import useGallery from "./hooks/useGallery";
+import useFavorites from "./hooks/useFavorites";
+import Gallery from "./components/Gallery";
+import Favorites from "./components/Favorites";
+import FavoriteForm from "./components/FavoriteForm";
+import themeContext from "./useTheme";
 
 function App() {
-  const [vista, setVista] = useState('galeria');
+  const [vista, setVista] = useState("galeria");
   const [selectedImage, setSelectedImage] = useState(null);
-  const { images, loading: galleryLoading, error: galleryError, loadMore } = useGallery();
-  const { favorites, loading, error, addFavorite, editNote, removeFavorite } = useFavorites();
+  const {
+    images,
+    loading: galleryLoading,
+    error: galleryError,
+    loadMore,
+  } = useGallery();
+  const { favorites, loading, error, addFavorite, editNote, removeFavorite } =
+    useFavorites();
+
+  const { theme, toggleTheme } = useContext(themeContext);
 
   const handleSaveRequest = (image) => {
     setSelectedImage(image);
@@ -37,17 +46,19 @@ function App() {
       {/* Barra de navegación */}
       <nav>
         <button
-          className={vista === 'galeria' ? 'active' : ''}
-          onClick={() => setVista('galeria')}
+          className={vista === "galeria" ? "active" : ""}
+          onClick={() => setVista("galeria")}
         >
           Galería
         </button>
         <button
-          className={vista === 'favoritos' ? 'active' : ''}
-          onClick={() => setVista('favoritos')}
+          className={vista === "favoritos" ? "active" : ""}
+          onClick={() => setVista("favoritos")}
         >
           Mis Favoritos ({favorites.length})
         </button>
+        Cambiar Tema
+        <button onClick={}></button>
       </nav>
 
       {/* Modal — se abre al presionar "Guardar en favoritos" */}
@@ -64,7 +75,7 @@ function App() {
       )}
 
       {/* Vistas */}
-      {vista === 'galeria' && (
+      {vista === "galeria" && (
         <Gallery
           images={images}
           loading={galleryLoading}
@@ -74,7 +85,7 @@ function App() {
         />
       )}
 
-      {vista === 'favoritos' && (
+      {vista === "favoritos" && (
         <Favorites
           favorites={favorites}
           loading={loading}
