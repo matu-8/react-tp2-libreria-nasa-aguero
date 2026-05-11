@@ -4,8 +4,6 @@ Aplicación fullstack de práctica que consume la API pública de la NASA (APOD 
 
 ---
 
-[!NOTE]:Checkear la pestaña de ramas, para ver el desarrollo de las tareas asignadas en ramas nuevas.
-[!NOTE]:Ramas disponibles hasta el momento: main, imp_memos
 ## Requisitos previos
 
 - Node.js v18 o superior
