@@ -1,7 +1,10 @@
+import { memo } from "react";
+
+//componente que recibe el titulo y una imagen.
 function ImageCard({ image, onSaveRequest }) {
   return (
     <div className="image-card">
-      {image.media_type === 'image' ? (
+      {image.media_type === "image" ? (
         <img src={image.url} alt={image.title} loading="lazy" />
       ) : (
         <iframe src={image.url} title={image.title} allowFullScreen />
@@ -17,4 +20,4 @@ function ImageCard({ image, onSaveRequest }) {
   );
 }
 
-export default ImageCard;
+export default memo(ImageCard); //implementacion de la funcion memo

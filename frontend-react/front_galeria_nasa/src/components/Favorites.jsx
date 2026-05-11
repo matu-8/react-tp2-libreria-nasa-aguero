@@ -1,16 +1,32 @@
-import { useState } from 'react';
-import FavoriteCard from './FavoriteCard';
-import SearchBar from './SearchBar';
+//Pagina de favoritos
+//
+
+import { useState, useMemo } from "react";
+import FavoriteCard from "./FavoriteCard";
+import SearchBar from "./SearchBar";
 
 function Favorites({ favorites, loading, error, onEdit, onDelete }) {
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
 
-  const filtered = favorites.filter((fav) =>
-    fav.title.toLowerCase().includes(search.toLowerCase())
-  );
+  // const filtered = useMemo(() => {
+  //   return favorites.filter((fav) =>
+  //     fav.title.toLowerCase().includes(search.toLowerCase()),
+  //   );
+  // }, [favorites, search]);
+  //   const filtered = useMemo(() => { })
+  const filtered = useMemo(() => {
+    return favorites.filter((fav) =>
+      fav.title.toLowerCase().includes(search.toLowerCase()),
+    );
+  }, [favorites, search]);
 
   if (loading) return <p className="loader">Cargando favoritos...</p>;
-  if (error) return <p className="error-msg" style={{ padding: '2rem' }}>Error: {error}</p>;
+  if (error)
+    return (
+      <p className="error-msg" style={{ padding: "2rem" }}>
+        Error: {error}
+      </p>
+    );
 
   return (
     <div>
